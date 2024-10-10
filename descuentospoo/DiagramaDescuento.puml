@@ -1,0 +1,30 @@
+@startuml
+class Producto {
+    - nombre: String
+    - precio: double
+    + getNombre(): String
+    + getPrecio(): double
+}
+
+interface EstrategiaDescuento {
+    + AplicacionDescuento(precio: double): double
+}
+
+class SinDescuento implements EstrategiaDescuento{
+    + AplicacionDescuento(precio: double): double
+}
+
+class DescuentoTemporada implements EstrategiaDescuento {
+    + AplicacionDescuento(precio: double): double
+}
+
+class DescuentoLiquidacion implements EstrategiaDescuento {
+    + AplicacionDescuento(precio: double): double
+}
+
+Producto --> EstrategiaDescuento
+EstrategiaDescuento <|-- SinDescuento
+EstrategiaDescuento <|-- DescuentoTemporada
+EstrategiaDescuento <|-- DescuentoLiquidacion
+@enduml
+
